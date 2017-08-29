@@ -5,7 +5,8 @@ MAINTAINER Valentin Delaye <valentin.delaye@gmail.com>
 # Update and install netcat
 RUN apt-get update && apt-get install netcat-traditional && rm -rf /var/lib/apt/lists/*
 
-COPY ["wait-for-it.sh", "app.js", "package.json", "/opt/web-app/"]
+COPY ["app.js", "package.json", "/opt/web-app/"]
+COPY ["wait-for-it.sh", "/"]
 COPY routes/* /opt/web-app/routes/
 COPY views/* /opt/web-app/views/
 COPY bin/* /opt/web-app/bin/
