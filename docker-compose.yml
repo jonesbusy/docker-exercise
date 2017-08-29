@@ -7,15 +7,29 @@ services:
   #
   lb:
     image: dockercloud/haproxy:1.6.7
-    #links:
-    #  - web-app
+    links:
+      - web-app
     container_name: web-app-lb
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - MODE=http
+    networks:
+      docker-exercise: 
     ports:
      - "3000:80" 
+     
+  #
+  # Web application
+  #
+  web-app:
+    image: web-app:0.0.1
+    build:
+      context: web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      docker-exercise: 
 
 
 #
