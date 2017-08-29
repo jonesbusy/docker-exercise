@@ -1,9 +1,9 @@
-# Docker exercice
+# Docker exercise
 
 This is an small application just to demonstrate a composition of a few containers and load balancing. The application is composed with :
 
 - One reverse proxy load-balancer
-- One web application with a single end-point
+- One web application with a single page
 - A database with a single table used by the web application
 
 
