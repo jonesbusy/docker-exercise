@@ -11,7 +11,7 @@ COPY views/* /opt/web-app/views/
 COPY bin/* /opt/web-app/bin/
 
 # Basic health check if port is open
-HEALTHCHECK CMD ((nc localhost 3000 < /dev/null)
+HEALTHCHECK CMD (nc -z -v localhost 3000)
 
 # Create user and fix permissions
 RUN adduser --system  --shell /bin/false --gid 0 web-user && \ 
