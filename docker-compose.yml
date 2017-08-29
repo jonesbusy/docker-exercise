@@ -1,0 +1,36 @@
+version: '2.0'
+  
+services:
+
+  #
+  # Load balancer / Reverse proxy
+  #
+  lb:
+    image: dockercloud/haproxy:1.6.7
+    #links:
+    #  - web-app
+    container_name: web-app-lb
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - MODE=http
+    ports:
+     - "3000:80" 
+
+
+#
+# Volumes
+#
+volumes:
+  webapp_data:
+
+#
+# Networking
+#
+networks:
+  docker-exercise:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"    
+    ipam:
+      driver: default
