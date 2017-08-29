@@ -30,7 +30,27 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       docker-exercise: 
+    command: ["node", "./bin/www"]
+    entrypoint: /wait-for-it.sh -t 60 db:3306 --
 
+
+  #
+  # Database
+  #
+  db:
+    image: web-app-db:0.0.1
+    build:
+      context: db
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - webapp_data:/var/lib/mysql
+    environment:
+     MYSQL_ROOT_PASSWORD: A_VERY_INSECURE_ROOT_PASSWORD
+     MYSQL_DATABASE: WEB-APP
+     MYSQL_USER: WEB-USER
+     MYSQL_PASSWORD: A_VERY_INSECURE_PASSWORD  
+    networks:
+      docker-exercise:
 
 #
 # Volumes
