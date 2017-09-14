@@ -24,8 +24,6 @@ services:
   #
   web-app:
     image: jonesbusy/docker-exercise-web:0.0.1
-    build:
-      context: web
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
@@ -39,8 +37,6 @@ services:
   #
   db:
     image: jonesbusy/docker-exercise-db:0.0.1
-    build:
-      context: db
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - webapp_data:/var/lib/mysql
