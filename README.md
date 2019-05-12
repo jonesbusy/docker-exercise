@@ -1,5 +1,7 @@
 # Docker exercise
 
+[![Build Status](https://dev.azure.com/jonesbusy/docker-exercise/_apis/build/status/jonesbusy.docker-exercise?branchName=master)](https://dev.azure.com/jonesbusy/docker-exercise/_build/latest?definitionId=1&branchName=master)
+
 This is an small application just to demonstrate a composition of a few containers and load balancing. The application is composed with :
 
 - One reverse proxy load-balancer
